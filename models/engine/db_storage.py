@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+#!/usr/bin/env python3
 """
 Contains the class DBStorage
 """
@@ -12,7 +12,6 @@ from models.review import Review
 from models.state import State
 from models.user import User
 from os import getenv
-import sqlalchemy
 from sqlalchemy import create_engine
 from sqlalchemy.orm import scoped_session, sessionmaker
 
@@ -83,15 +82,14 @@ class DBStorage:
         return gt_all.id
 
     def count(self, cls=None):
-    """count the numbers of objects in storage"""
-    count_all = 0
-    count_cls = 0
-    gt_all = self.all(cls)
-    for key in gt_all:
-        if key == cls:
-            count_cls += 1
-            return count_cls
-        else:
-            count_all += 1
-            return count_all
-
+        """count the numbers of objects in storage"""
+        count_all = 0
+        count_cls = 0
+        gt_all = self.all(cls)
+        for key in gt_all:
+            if key == cls:
+                count_cls += 1
+                return count_cls
+            else:
+                count_all += 1
+                return count_all
