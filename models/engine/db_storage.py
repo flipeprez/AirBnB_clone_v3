@@ -77,9 +77,9 @@ class DBStorage:
     def get(self, cls , id):
         """a method to retrive one object"""
         gt_all = self.all(cls)
-        """srch = "{}{}".format(str (cls), str(id))"""
-        """rslt = srch."""
-        return gt_all.id
+        srch = "{}{}".format(str(cls), str(id))
+        rslt = srch.cls.id
+        return rslt
 
     def count(self, cls=None):
         """count the numbers of objects in storage"""
