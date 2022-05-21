@@ -9,6 +9,6 @@ from flask import jsonify
 def dict_json():
     """return json"""
     my_dict = {
-        "status": "ok"
+        "status": "OK"
     }
     return jsonify(my_dict)
