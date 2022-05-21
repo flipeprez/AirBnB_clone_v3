@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+#!/usr/bin/env python3
 """
 Contains the class DBStorage
 """
@@ -12,7 +12,6 @@ from models.review import Review
 from models.state import State
 from models.user import User
 from os import getenv
-import sqlalchemy
 from sqlalchemy import create_engine
 from sqlalchemy.orm import scoped_session, sessionmaker
 
@@ -74,3 +73,18 @@ class DBStorage:
     def close(self):
         """call remove() method on the private session attribute"""
         self.__session.remove()
+
+    def get(self, cls, id):
+        """a method to retrive one object"""
+        gt_all = self.all(cls)
+        srch = "{}.{}".format(cls.__name__, str(id))
+        rslt = gt_all.get(srch)
+        return rslt
+
+    def count(self, cls=None):
+        """count the numbers of objects in storage"""
+        if cls is None:
+            ret = None
+        else:
+            ret = str(cls)
+        return len(self.all())
