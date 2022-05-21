@@ -87,4 +87,4 @@ class DBStorage:
             ret = None
         else:
             ret = str(cls)
-        return len(self.all())
+        return len(self.all(ret))
