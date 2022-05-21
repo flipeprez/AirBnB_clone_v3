@@ -81,7 +81,6 @@ class DBStorage:
         rslt = gt_all.get(srch)
         return rslt
 
-
     def count(self, cls=None):
         """count the numbers of objects in storage"""
         if cls is None:

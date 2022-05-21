@@ -55,7 +55,7 @@ class FileStorage:
                 jo = json.load(f)
             for key in jo:
                 self.__objects[key] = classes[jo[key]["__class__"]](**jo[key])
-        except:
+        except FileNotFoundError:
             pass
 
     def delete(self, obj=None):
@@ -76,11 +76,10 @@ class FileStorage:
         rslt = gt_all.get(srch)
         return rslt
 
-
     def count(self, cls=None):
         """count the numbers of objects in storage"""
         if cls is None:
             ret = None
         else:
             ret = str(cls)
-        return len(self.all(ret)) 
+        return len(self.all(ret))
