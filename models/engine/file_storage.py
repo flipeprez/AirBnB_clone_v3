@@ -72,7 +72,7 @@ class FileStorage:
     def get(self, cls, id):
         """a method to retrive one object"""
         gt_all = self.all(cls)
-        srch = "{}.{}".format(str(cls), str(id))
+        srch = "{}.{}".format(cls.__name__, str(id))
         rslt = gt_all.get(srch)
         return rslt
 
@@ -81,5 +81,5 @@ class FileStorage:
         if cls is None:
             return len(self.all())
         else:
-            ret = str(cls)
+            ret = cls.__name__
         return len(self.all(ret))
