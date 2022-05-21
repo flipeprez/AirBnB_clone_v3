@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 """Modulo index"""
 from api.v1.views import app_views
-import json
+from flask import jsonify
 
 
 
@@ -11,4 +11,4 @@ def dict_json():
     my_dict = {
         "status": "ok"
     }
-    return json.dumps(my_dict)
+    return jsonify(my_dict)
