@@ -1,8 +1,10 @@
 #!/usr/bin/python3
 """Status of your API"""
+from http.client import HTTPException
+from urllib import response
 from api.v1.views import app_views
 from models import storage
-from flask import Flask
+from flask import Flask, jsonify
 import os
 
 
@@ -14,6 +16,14 @@ app.register_blueprint(app_views, url_prefix='/api/v1')
 def close(a):
     """Handle the app.teardown_appcontext"""
     return storage.close()
+
+
+@app.errorhandler(404)
+def page_not_found(e):
+    """Message error 404"""
+    response = jsonify({"error": "Not found"})
+    response.status_code = 404
+    return response
 
 
 if __name__ == "__main__":
