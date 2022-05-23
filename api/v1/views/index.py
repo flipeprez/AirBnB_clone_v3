@@ -19,6 +19,7 @@ def dict_json():
     }
     return jsonify(my_dict)
 
+
 @app_views.route('/stats')
 def numb_obj():
     """endpoint that retrives number of each object"""
