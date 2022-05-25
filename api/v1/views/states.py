@@ -6,16 +6,16 @@ from models import storage
 from models import State
 
 
-@app_views.route('/states/', methods=['GET'], strict_slashes=False)
-@app_views.route('/states/<state_id>', methods=['GET'], strict_slashes=False)
+@app_views.route('/states/', methods=["GET"], strict_slashes=False)
+@app_views.route('/states/<state_id>', methods=["GET"], strict_slashes=False)
 def state(state_id=None):
     '''a nice comment'''
     if state_id is None:
         state = storage.all("State")
-        mstates = [value.todict() for key, value in states.items()]
+        mstates = [value.to_dict() for key, value in states.items()]
         return jsonify(mstates)
 
-    mstates = storage.get("state", state_id)
+    mstates = storage.get("State", state_id)
     if mstates is not None:
         return jsonify(mstates.to_dict())
     abort(404)
@@ -24,12 +24,12 @@ def state(state_id=None):
 @app_views.route('/states/<s_id>', methods=['DELETE'], strict_slashes=False)
 def del_states(s_id):
     '''a nice comment'''
-    gtstates = storage.get("states", s_id)
+    gtstates = storage.get("States", s_id)
     if gtstates is None:
         abort(404)
     storage.delete(gtstates)
     storage.save()
-    jsonify({})
+    return jsonify({})
 
 
 @app_views.route('/states', methods=['POST'], strict_slashes=False)
@@ -55,7 +55,7 @@ def update_states(states_id):
     if gtcont is None:
         return (jsonify({"error": "Not a JSON"}), 400)
 
-    upstate = storage.get("state, state_id")
+    upstate = storage.get("State, state_id")
     if upstate is None:
         abort(404)
 
