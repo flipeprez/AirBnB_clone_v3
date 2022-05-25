@@ -24,7 +24,7 @@ def state(state_id=None):
 @app_views.route('/states/<s_id>', methods=['DELETE'], strict_slashes=False)
 def del_states(s_id):
     '''a nice comment'''
-    gtstates = storage.get("States", s_id)
+    gtstates = storage.get("State", s_id)
     if gtstates is None:
         abort(404)
     storage.delete(gtstates)
@@ -55,7 +55,7 @@ def update_states(states_id):
     if gtcont is None:
         return (jsonify({"error": "Not a JSON"}), 400)
 
-    upstate = storage.get("State, state_id")
+    upstate = storage.get("State", state_id)
     if upstate is None:
         abort(404)
 
