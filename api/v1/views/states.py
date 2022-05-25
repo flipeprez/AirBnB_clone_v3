@@ -12,7 +12,7 @@ def state(state_id=None):
     '''a nice comment'''
     if state_id is None:
         state = storage.all("State")
-        mstates = [value.to_dict() for key, value in states.items()]
+        mstates = [value.to_dict() for key, value in state.items()]
         return jsonify(mstates)
 
     mstates = storage.get("State", state_id)
