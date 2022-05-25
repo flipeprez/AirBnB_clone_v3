@@ -7,7 +7,7 @@ from models import State
 
 
 @app_views.route('/states', methods=["GET"], strict_slashes=False)
-@app_views.route('/states/state_id', methods=["GET"], strict_slashes=False)
+@app_views.route('/states/<state_id>', methods=["GET"], strict_slashes=False)
 def state(state_id=None):
     '''a nice comment'''
     if state_id is None:
