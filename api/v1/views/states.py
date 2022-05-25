@@ -10,10 +10,10 @@ from models import State
 @app_views.route('/states/<state_id>', methods=['GET'], strict_slashes=False)
 def state(state_id=None):
     '''a nice comment'''
-    if request.method == 'GET':
-        ls = []
+    if state_id is None:
+        state = storage.all("State")
         for obj in storage.all(State).values():
-            ls.append(obj.to_dict())
+            state.append(obj.to_dict())
         return jsonify(ls)
 
 
