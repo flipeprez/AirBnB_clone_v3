@@ -6,8 +6,8 @@ from models import storage
 from models import State
 
 
-@app_views.route('/states/', methods=["GET"], strict_slashes=False)
-@app_views.route('/states/<state_id>', methods=["GET"], strict_slashes=False)
+@app_views.route('/states', methods=["GET"], strict_slashes=False)
+@app_views.route('/states/state_id', methods=["GET"], strict_slashes=False)
 def state(state_id=None):
     '''a nice comment'''
     if state_id is None:
@@ -21,7 +21,7 @@ def state(state_id=None):
     abort(404)
 
 
-@app_views.route('/states/<s_id>', methods=['DELETE'], strict_slashes=False)
+@app_views.route('/states/s_id', methods=['DELETE'], strict_slashes=False)
 def del_states(s_id):
     '''a nice comment'''
     gtstates = storage.get("State", s_id)
@@ -48,7 +48,7 @@ def state_pos():
     return (jsonify(n_state.to_dict()), 201)
 
 
-@app_views.route('/states/<states_id>', methods=['PUT'], strict_slashes=False)
+@app_views.route('/states/states_id', methods=['PUT'], strict_slashes=False)
 def update_states(states_id):
     '''a nice comment'''
     gtcont = request.get_json()
