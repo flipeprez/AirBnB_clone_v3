@@ -6,7 +6,8 @@ from models import storage
 from models import State
 
 
-@app_views.route('/states', strict_slashes=False)
+@app_views.route('/states/', strict_slashes=False)
+@app_views.route('/states/<state_id>', methods=["GET"], strict_slashes=False)
 def state():
     '''a nice comment'''
     if request.method == 'GET':
