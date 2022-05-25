@@ -1,14 +1,14 @@
 #!/usr/bin/python3
 '''a nice comment'''
 from api.v1.views import app_views
-from flask import Flask, jsonify, request, abort
+from flask import jsonify, request, abort
 from models import storage
 from models import State
 
 
-@app_views.route('/states/', strict_slashes=False)
-@app_views.route('/states/<state_id>', methods=["GET"], strict_slashes=False)
-def state():
+@app_views.route('/states/', methods=['GET'], strict_slashes=False)
+@app_views.route('/states/<state_id>', methods=['GET'], strict_slashes=False)
+def state(state_id=None):
     '''a nice comment'''
     if request.method == 'GET':
         ls = []
