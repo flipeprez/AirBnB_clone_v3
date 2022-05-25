@@ -12,10 +12,13 @@ def state(state_id=None):
     '''a nice comment'''
     if state_id is None:
         state = storage.all("State")
-        for obj in storage.all(State).values():
-            state.append(obj.to_dict())
-        return jsonify(ls)
+        mstates = [value.todict() for key, value in states.items()]
+        return jsonify(mstates)
 
+    mstates = storage.get("state", state_id)
+    if mstates is not None:
+        return jsonify(mstates.to_dict())
+    abort(404)
 
 @app_views.route('/states/<states_id>', methods=['DELETE'], strict_slashes=False)
 def del_states(s_id):
